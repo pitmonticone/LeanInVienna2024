@@ -106,7 +106,7 @@ example : evens ∪ odds = univ := by
   rw [evens, odds]
   ext n
   simp
-  apply Classical.em
+  exact Nat.even_or_odd n
 
 example (x : ℕ) (h : x ∈ (∅ : Set ℕ)) : False :=
   h
