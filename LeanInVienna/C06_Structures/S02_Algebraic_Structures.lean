@@ -84,7 +84,7 @@ variable {α : Type*} (f g : Equiv.Perm α) (n : ℕ)
 -- group power, defined for any group
 #check g ^ n
 
-example : f * g * g⁻¹ = f := by rw [mul_assoc, mul_right_inv, mul_one]
+example : f * g * g⁻¹ = f := by rw [mul_assoc, mul_inv_cancel, mul_one]
 
 example : f * g * g⁻¹ = f :=
   mul_inv_cancel_right f g
