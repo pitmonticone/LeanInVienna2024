@@ -9,7 +9,7 @@ the official [website](https://code.visualstudio.com) and complete the installat
 
 ## Install Lean 4
 
-Ensure that you have a functioning Lean 4 installation. If you do not, please follow the instructions below:
+Please follow the instructions below:
 
 1. Launch VS Code and install the `Lean 4` extension by clicking on the *Extensions* sidebar entry and searching for 'Lean 4'.
 
