@@ -19,6 +19,7 @@
         "**/.gitignore": true,
         "**/.lake": true,
         "**/.vscode": true,
+        "**/images": true,
         "**/lake-manifest.json": true,
         "**/lakefile.toml": true,
         "**/lean-toolchain": true,

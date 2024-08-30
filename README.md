@@ -2,15 +2,26 @@
 
 ![Vienna](https://www.dmg.tuwien.ac.at/lean2024/TUW_imoox_kleiner.jpg)
 
-## Install Visual Studio Code (VSCode)
+## Install Visual Studio Code (VS Code)
 
 VS Code is the recommended IDE for working with Lean 4. Please download the latest version from
 the official [website](https://code.visualstudio.com) and complete the installation procedure.
 
 ## Install Lean 4
 
-Ensure that you have a functioning Lean 4 installation. If you do not, please follow
-the [Lean installation guide](https://leanprover-community.github.io/get_started.html).
+Ensure that you have a functioning Lean 4 installation. If you do not, please follow the instructions below:
+
+1. Launch VS Code and install the `Lean 4` extension by clicking on the *Extensions* sidebar entry and searching for 'Lean 4'.
+
+    ![Installing the vscode-lean4 extension](images/code-ext.png)
+
+1. Open the Lean 4 setup guide by creating a new text file using *File > New Text File* (`Ctrl + N` / `Cmd + N`), clicking on the $\forall$-symbol in the top right and selecting *Documentation… > Docs: Show Setup Guide*.
+
+    ![Docs: Show Setup Guide](images/show-setup-guide.png)
+
+1. Follow the Lean 4 setup guide.
+
+    ![Setup Guide](images/setup_guide.png)
 
 ## Clone this Repository
 
