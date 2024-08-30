@@ -2,28 +2,40 @@
 
 ![Vienna](https://www.dmg.tuwien.ac.at/lean2024/TUW_imoox_kleiner.jpg)
 
-## Install VS Code
+## Installing VS Code
 
-VS Code is the recommended IDE for working with Lean 4. Please download the latest version from
-the official [website](https://code.visualstudio.com) and complete the installation procedure.
+VS Code is the recommended IDE for working with Lean 4. To install VS Code, follow these steps:
 
-## Install Lean 4
+1. Visit the official Visual Studio Code [website](https://code.visualstudio.com).
+2. Download the latest version of VS Code for your operating system (Windows, macOS, or Linux).
+3. Follow the installation instructions provided on the website to complete the setup process.
 
-Please follow the instructions below:
+Once the installation is complete, you can proceed with configuring VS Code for Lean 4 development.
 
-1. Launch VS Code and install the `Lean 4` extension by clicking on the *Extensions* sidebar entry and searching for 'Lean 4'.
+## Installing Lean 4
 
-    ![Installing the vscode-lean4 extension](images/code-ext.png)
+To install Lean 4, please follow these instructions:
 
-1. Open the Lean 4 setup guide by creating a new text file using *File > New Text File* (`Ctrl + N` / `Cmd + N`), clicking on the $\forall$-symbol in the top right and selecting *Documentation… > Docs: Show Setup Guide*.
+1. **Install the Lean 4 Extension in VS Code**:
+   - Open Visual Studio Code (VS Code).
+   - Navigate to the *Extensions* sidebar by clicking on the square icon on the left panel.
+   - Search for 'Lean 4' in the search bar and install the `Lean 4` extension.
 
-    ![Docs: Show Setup Guide](images/show-setup-guide.png)
+   ![Installing the vscode-lean4 extension](images/code-ext.png)
 
-1. Follow the Lean 4 setup guide.
+2. **Access the Lean 4 Setup Guide**:
+   - Create a new text file by selecting *File > New Text File* or using the keyboard shortcut (`Ctrl + N` on Windows/Linux or `Cmd + N` on macOS).
+   - Click on the $\forall$-symbol located in the top right corner of the window.
+   - From the dropdown menu, select *Documentation… > Docs: Show Setup Guide*.
 
-    ![Setup Guide](images/setup_guide.png)
+   ![Docs: Show Setup Guide](images/show-setup-guide.png)
 
-## Clone Repository
+3. **Follow the Instructions in the Setup Guide**:
+   - Carefully read and follow the instructions provided in the Lean 4 setup guide to complete the installation process.
+
+   ![Setup Guide](images/setup_guide.png)
+
+## Cloning this Repository
 
 To clone this repository to your local machine, please refer to the relevant section of
 the GitHub documentation [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
