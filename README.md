@@ -23,7 +23,7 @@ Please follow the instructions below:
 
     ![Setup Guide](images/setup_guide.png)
 
-## Clone this Repository
+## Clone Repository
 
 To clone this repository to your local machine, please refer to the relevant section of
 the GitHub documentation [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
