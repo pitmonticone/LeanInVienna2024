@@ -2,7 +2,7 @@
 
 ![Vienna](https://www.dmg.tuwien.ac.at/lean2024/TUW_imoox_kleiner.jpg)
 
-## Install Visual Studio Code (VS Code)
+## Install VS Code
 
 VS Code is the recommended IDE for working with Lean 4. Please download the latest version from
 the official [website](https://code.visualstudio.com) and complete the installation procedure.
