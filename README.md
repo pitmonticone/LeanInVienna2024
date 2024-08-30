@@ -6,7 +6,7 @@
 
 VS Code is the recommended IDE for working with Lean 4. To install VS Code, follow these steps:
 
-1. Visit the official Visual Studio Code [website](https://code.visualstudio.com).
+1. Visit the official VS Code [website](https://code.visualstudio.com).
 2. Download the latest version of VS Code for your operating system (Windows, macOS, or Linux).
 3. Follow the installation instructions provided on the website to complete the setup process.
 
