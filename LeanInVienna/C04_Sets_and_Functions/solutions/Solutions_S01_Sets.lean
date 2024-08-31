@@ -1,7 +1,6 @@
 import Mathlib.Data.Set.Lattice
 import Mathlib.Data.Nat.Prime.Basic
 import LeanInVienna.Common
-
 section
 variable {α : Type*}
 variable (s t u : Set α)
@@ -79,13 +78,11 @@ example : s \ t ∪ t \ s = (s ∪ t) \ (s ∩ t) := by
 example : { n | Nat.Prime n } ∩ { n | n > 2 } ⊆ { n | ¬Even n } := by
   intro n
   simp
-  intro nprime
+  intro nprime n_gt
   rcases Nat.Prime.eq_two_or_odd nprime with h | h
   · rw [h]
-    intro
     linarith
-  rw [Nat.even_iff, h]
-  norm_num
+  · rw [Nat.odd_iff, h]
 
 end
 
