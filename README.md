@@ -17,7 +17,7 @@ Once the installation is complete, you can proceed with configuring VS Code for 
 To install Lean 4, please follow these instructions:
 
 1. **Install the Lean 4 Extension in VS Code**:
-   - Open Visual Studio Code (VS Code).
+   - Open VS Code.
    - Navigate to the *Extensions* sidebar by clicking on the square icon on the left panel.
    - Search for 'Lean 4' in the search bar and install the `Lean 4` extension.
 
