@@ -1,22 +1,35 @@
 import LeanInVienna.Common
 
-open Nat
+-- Lean is a formal language for manipulating mathematical objects, propositions and proofs.
 
 -- These are pieces of data.
+-- Lean is not a calculator.
 #check 2 + 2
 
-def f (x : ℕ) :=
-  x + 3
+-- Lean can be a calculator
+#eval 2 + 2
+#eval 7^23487
 
-#check f
+section
+variable {R : Type} [CommRing R]
+variable (x y z : R)
+
+#conv ring_nf => (x + y + z)^3
+
+end
+
+@[simp]
+def fib : ℕ → ℕ
+  | 0 => 0
+  | 1 => 1
+  | n + 2 => fib n + fib (n + 1)
+
+#eval fib 6
+#eval List.range 20 |>.map fib
 
 -- These are propositions, of type `Prop`.
 #check 2 + 2 = 4
-
-def FermatLastTheorem :=
-  ∀ x y z n : ℕ, n > 2 ∧ x * y * z ≠ 0 → x ^ n + y ^ n ≠ z ^ n
-
-#check FermatLastTheorem
+#check 2 + 2 = 5
 
 -- These are proofs of propositions.
 theorem easy : 2 + 2 = 4 :=
@@ -24,18 +37,10 @@ theorem easy : 2 + 2 = 4 :=
 
 #check easy
 
-theorem hard : FermatLastTheorem :=
-  sorry
+theorem foo (x y : ℝ) : (x+y)^3 = x^3 + 3*x^2*y + 3*x*y^2 + y^3 := by
+  ring
 
-#check hard
-
--- Here are some proofs.
-example : ∀ m n : Nat, Even n → Even (m * n) := fun m n ⟨k, (hk : n = k + k)⟩ ↦
-  have hmn : m * n = m * k + m * k := by rw [hk, mul_add]
-  show ∃ l, m * n = l + l from ⟨_, hmn⟩
-
-example : ∀ m n : Nat, Even n → Even (m * n) :=
-fun m n ⟨k, hk⟩ ↦ ⟨m * k, by rw [hk, mul_add]⟩
+#print foo
 
 example : ∀ m n : Nat, Even n → Even (m * n) := by
   -- Say `m` and `n` are natural numbers, and assume `n = 2 * k`.
@@ -48,7 +53,21 @@ example : ∀ m n : Nat, Even n → Even (m * n) := by
   ring
 
 example : ∀ m n : Nat, Even n → Even (m * n) := by
-  rintro m n ⟨k, hk⟩; use m * k; rw [hk]; ring
+  exact?
 
-example : ∀ m n : Nat, Even n → Even (m * n) := by
-  intros; simp [*, parity_simps]
+theorem bar (x : ℝ) : 2*x ≤ x^2 + 1 := by
+  apply le_of_sub_nonneg
+  calc
+    0 ≤ (x - 1)^2     := by positivity
+    _ = x^2 + 1 - 2*x := by ring
+
+#check intermediate_value_univ
+open Set
+
+example : ∃ x : ℝ, x^3 + 2*x + 1 = 0 := by
+  let f (x : ℝ) := x^3 + 2*x + 1
+  suffices 0 ∈ range f by simp_all
+  apply intermediate_value_univ (a := -1) (b := 1)
+  . fun_prop
+  · simp [f]
+    norm_num
