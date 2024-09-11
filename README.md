@@ -59,3 +59,9 @@ the GitHub documentation [here](https://docs.github.com/en/repositories/creating
 | | 13:30 - 14:15 | Pietro Monticone | Getting Started with Blueprint-Driven Formalisation Projects in Lean |
 | | 14:15 - 15:30 | Tomáš Skřivan | [Differential Calculus (1/2)](LeanInVienna/C10_Differential_Calculus) |
 | | 16:00 - 17:30 | Tomáš Skřivan | [Differential Calculus (2/2)](LeanInVienna/C10_Differential_Calculus) |
+
+## References
+
+- [Natural Number Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4)
+- [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)
+- [GOL](https://github.com/PatrickMassot/GlimpseOfLean)
