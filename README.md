@@ -64,4 +64,4 @@ the GitHub documentation [here](https://docs.github.com/en/repositories/creating
 
 - [Natural Number Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4)
 - [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)
-- [GOL](https://github.com/PatrickMassot/GlimpseOfLean)
+- [Glimpse Of Lean](https://github.com/PatrickMassot/GlimpseOfLean)
