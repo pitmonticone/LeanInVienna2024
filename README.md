@@ -60,8 +60,9 @@ the GitHub documentation [here](https://docs.github.com/en/repositories/creating
 | | 14:15 - 15:30 | Tomáš Skřivan | [Differential Calculus (1/2)](LeanInVienna/C10_Differential_Calculus) |
 | | 16:00 - 17:30 | Tomáš Skřivan | [Differential Calculus (2/2)](LeanInVienna/C10_Differential_Calculus) |
 
-## Mathlib Search Engines
+## Search Engines
 
+- [Lean Package Registry](https://reservoir.lean-lang.org)
 - [Mathlib Documentation](https://leanprover-community.github.io/mathlib4_docs/)
 - [Loogle](https://loogle.lean-lang.org)
 - [Moogle](https://www.moogle.ai)
