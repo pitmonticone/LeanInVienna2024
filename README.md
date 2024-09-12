@@ -63,7 +63,7 @@ the GitHub documentation [here](https://docs.github.com/en/repositories/creating
 ## Search Engines
 
 - [Lean Package Registry](https://reservoir.lean-lang.org)
-- [Mathlib documentation](https://leanprover-community.github.io/mathlib4_docs/) is great reference,
+- [Mathlib documentation](https://leanprover-community.github.io/mathlib4_docs/) is a great reference,
    but you either need to know where to look, or what things are named.
    To help with naming, you can reference the [naming conventions](https://leanprover-community.github.io/mathlib_docs/naming.html).
 - [Loogle](https://loogle.lean-lang.org) is useful if you know something about the types appearing
