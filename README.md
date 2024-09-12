@@ -67,6 +67,7 @@ the GitHub documentation [here](https://docs.github.com/en/repositories/creating
 - [Loogle](https://loogle.lean-lang.org)
 - [Moogle](https://www.moogle.ai)
 - [LeanSearch](https://leansearch.net)
+- [Zulip Channel "Is There Code for X?"](https://leanprover.zulipchat.com/#narrow/stream/217875-Is-there-code-for-X.3F)
 
 ## References
 
