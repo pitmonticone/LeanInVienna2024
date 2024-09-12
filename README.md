@@ -63,9 +63,12 @@ the GitHub documentation [here](https://docs.github.com/en/repositories/creating
 ## Search Engines
 
 - [Lean Package Registry](https://reservoir.lean-lang.org)
-- [Mathlib Documentation](https://leanprover-community.github.io/mathlib4_docs/)
-- [Loogle](https://loogle.lean-lang.org)
-- [Moogle](https://www.moogle.ai)
+- [Mathlib documentation](https://leanprover-community.github.io/mathlib4_docs/) is great reference,
+   but you either need to know where to look, or what things are named.
+   To help with naming, you can reference the [naming conventions](https://leanprover-community.github.io/mathlib_docs/naming.html).
+- [Loogle](https://loogle.lean-lang.org) is useful if you know something about the types appearing
+  in the statement.
+- [Moogle](https://moogle.ai) is useful if you only know the natural language phrasing.
 - [LeanSearch](https://leansearch.net)
 - [Zulip Channel "Is There Code for X?"](https://leanprover.zulipchat.com/#narrow/stream/217875-Is-there-code-for-X.3F)
 
