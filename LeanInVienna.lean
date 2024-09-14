@@ -1,6 +1,7 @@
 import LeanInVienna.Common
 import LeanInVienna.C01_Introduction.S01_Getting_Started
 import LeanInVienna.C01_Introduction.S02_Overview
+import LeanInVienna.C02_Basics.S00_Overview
 import LeanInVienna.C02_Basics.S01_Calculating
 import LeanInVienna.C02_Basics.S02_Proving_Identities_in_Algebraic_Structures
 import LeanInVienna.C02_Basics.S03_Using_Theorems_and_Lemmas
