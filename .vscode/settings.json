@@ -23,7 +23,6 @@
         "**/lake-manifest.json": true,
         "**/lakefile.toml": true,
         "**/lean-toolchain": true,
-        "**/LICENSE": true,
-        "**/solutions": true
+        "**/LICENSE": true
     }
 }
