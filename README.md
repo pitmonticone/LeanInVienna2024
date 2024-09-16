@@ -77,3 +77,4 @@ the GitHub documentation [here](https://docs.github.com/en/repositories/creating
 - [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)
 - [Glimpse Of Lean](https://github.com/PatrickMassot/GlimpseOfLean)
 - [The Mechanics of Proof](https://hrmacbeth.github.io/math2001/)
+- [Lean for the Curious Mathematician 2023](https://lftcm2023.github.io)
