@@ -9,7 +9,7 @@ variable (a b : ℝ)
 example (h : a < b) : ¬b < a := by
   intro h'
   have : a < a := lt_trans h h'
-  apply lt_irrefl a this
+  exact lt_irrefl a this
 
 def FnUb (f : ℝ → ℝ) (a : ℝ) : Prop :=
   ∀ x, f x ≤ a
