@@ -41,6 +41,13 @@ In short: `git clone https://github.com/pitmonticone/LeanInVienna2024.git`
 
 [GitHub documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
+After cloning the repository, you probably want to run:
+
+```
+cd LeanInVienna2024/
+lake exe cache get
+```
+
 ## Schedule
 
 | Date | Time | Speaker | Topic |
