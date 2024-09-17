@@ -59,10 +59,10 @@ lake exe cache get
 | | 16:00 - 17:30 | Pietro Monticone | [Logic (2/2)](LeanInVienna/C03_Logic) |
 | Sep 19 | 9:00 - 09:45 | Moritz Firsching | Beginner's mistakes using Mathlib/Lean |
 | | 10:15 - 12:15 | Markus Himmel | [Sets and Functions](LeanInVienna/C04_Sets_and_Functions) |
-| | 13:45 - 14:30 | Markus Himmel | Lean Metaprogramming Overview |
+| | 13:45 - 14:30 | Markus Himmel | Working with Mathlib |
 | | 14:30 - 15:45 | Moritz Firsching | [Elementary Number Theory (1/2)](LeanInVienna/C05_Elementary_Number_Theory) |
 | | 16:15 - 17:30 | Moritz Firsching | [Elementary Number Theory (2/2)](LeanInVienna/C05_Elementary_Number_Theory) |
-| Sep 20 | 09:00 - 09:30 | Markus Himmel | Working with Mathlib |
+| Sep 20 | 09:00 - 09:30 | Markus Himmel | Lean Metaprogramming Overview |
 | | 09:30 - 10:30 | Tomáš Skřivan | [Structures (1/2)](LeanInVienna/C06_Structures) |
 | | 11:00 - 12:15 | Tomáš Skřivan | [Structures (2/2)](LeanInVienna/C06_Structures) |
 | | 13:45 - 14:30 | Pietro Monticone | Getting Started with Blueprint-Driven Formalisation Projects in Lean |
