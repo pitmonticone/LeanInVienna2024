@@ -39,8 +39,7 @@ To install Lean 4, please follow these instructions:
 
 In short: `git clone https://github.com/pitmonticone/LeanInVienna2024.git`
 
-To clone this repository to your local machine, please refer to the relevant section of
-the GitHub documentation [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+[GitHub documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 ## Schedule
 
