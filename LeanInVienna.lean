@@ -1,7 +1,6 @@
 import LeanInVienna.Common
 import LeanInVienna.C01_Introduction.S01_Getting_Started
 import LeanInVienna.C01_Introduction.S02_Overview
-import LeanInVienna.C02_Basics.S00_Overview
 import LeanInVienna.C02_Basics.S01_Calculating
 import LeanInVienna.C02_Basics.S02_Proving_Identities_in_Algebraic_Structures
 import LeanInVienna.C02_Basics.S03_Using_Theorems_and_Lemmas
@@ -22,6 +21,9 @@ import LeanInVienna.C05_Elementary_Number_Theory.S03_Infinitely_Many_Primes
 import LeanInVienna.C06_Structures.S01_Structures
 import LeanInVienna.C06_Structures.S02_Algebraic_Structures
 import LeanInVienna.C06_Structures.S03_Building_the_Gaussian_Integers
+import LeanInVienna.C07_Hierarchies.S01_Basics
+import LeanInVienna.C07_Hierarchies.S02_Morphisms
+import LeanInVienna.C07_Hierarchies.S03_Subobjects
 import LeanInVienna.C10_Differential_Calculus.S01_Elementary_Differential_Calculus
 import LeanInVienna.C10_Differential_Calculus.S02_Differential_Calculus_in_Normed_Spaces
 import LeanInVienna.Test
