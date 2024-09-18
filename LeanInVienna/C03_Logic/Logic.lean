@@ -136,6 +136,8 @@ In the following exercises we will use the lemma:
   `sub_nonneg : 0 ≤ y - x ↔ x ≤ y`
 -/
 
+#check sub_nonneg
+
 example {a b c : ℝ} : c + a ≤ c + b ↔ a ≤ b := by
   rw [← sub_nonneg]
   have key : (c + b) - (c + a) = b - a := by-- Here we introduce an intermediate statement named key
@@ -180,8 +182,6 @@ example {a b : ℝ}  (ha : 0 ≤ a) : b ≤ a + b := by
   calc
     b = 0 + b := by ring
     _ ≤ a + b := by exact (add_le_add_iff_right b).2 ha
-
-
 
 /- Let's do a variant using `add_le_add_iff_left a : a + b ≤ a + c ↔ b ≤ c` instead. -/
 
