@@ -16,13 +16,10 @@
     // Remove any trailing whitespace on save
     "files.trimTrailingWhitespace": true,
     "files.exclude": {
-        "**/.gitignore": true,
         "**/.lake": true,
         "**/.vscode": true,
         "**/images": true,
-        "**/lake-manifest.json": true,
-        "**/lakefile.toml": true,
-        "**/lean-toolchain": true,
         "**/LICENSE": true
-    }
+    },
+    "workbench.colorTheme": "Visual Studio Light"
 }
