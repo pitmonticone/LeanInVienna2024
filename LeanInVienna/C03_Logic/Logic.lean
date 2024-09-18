@@ -3,6 +3,38 @@ import Mathlib.Data.Real.Basic
 
 open Function
 
+/- # Logical Connectives
+
+An overview of the most important logical connectives:
+
+| Symbol     | Code     | Meaning                                   |
+|------------|----------|-------------------------------------------|
+| `→`        | `\to`  | if ... then ... (implication)             |
+| `∀`        | `\all` | for all (universal quantification)        |
+| `∃`        | `\ex`  | there exists (existential quantification) |
+| `¬`        | `\not` | not (negation)                            |
+| `∧`        | `\and` | and (conjunction)                         |
+| `∨`        | `\or`  | or (disjunction)                          |
+| `↔`        | `\iff` | ... if and only if ... (biimplication)    |
+| `False`    |        | contradiction! (falsity)                  |
+| `True`     |        | this is trivial (truth)                   |
+
+How to use them in Lean:
+
+| Connective | When appearing as a hypothesis `h`                | When appearing as a target            |
+|------------|---------------------------------------------------|--------------------------------------|
+| `A → B`    | `have h' := h ha`, `apply h`                      | `intro ha`                           |
+| `∀ x, P x` | `have h' := h x`, `apply h`, `specialize`         | `intro x`                            |
+| `A ∧ B`    | `rcases h with ⟨ha, hb⟩`, `h.1`, `h.2`            | `constructor`                        |
+| `A ∨ B`    | `rcases h with (ha | hb)`                         | `left` or `right`                    |
+| `∃ x, P x` | `rcases h with ⟨x, hx⟩`                           | `constructor` or `use x`             |
+| `False`    | `contradiction`                                   | --                                   |
+| `True`     | --                                                | `trivial`                            |
+| `¬ A`      | `contradiction`                                   | `intro ha`                           |
+| `A ↔ B`    | `rcases h with ⟨h₁, h₂⟩`                          | `constructor`                        |
+
+-/
+
 namespace Implication
 
 /- # Implications
@@ -78,10 +110,9 @@ This is done using the `intro` tactic. Secretly the exercise above was proving t
 implication `a > 0 → (a^2)^2 > 0` but the premise was already introduced for us.
 -/
 
-example (a b : ℝ) : a > 0 → b > 0 → a + b > 0 := by {
+example (a b : ℝ) : a > 0 → b > 0 → a + b > 0 := by
   intro ha hb -- You can choose any names here
   exact add_pos ha hb
-}
 
 /- Now prove the following simple statement in propositional logic.
 Note that `p → q → r` means `p → (q → r)`. -/
@@ -105,13 +136,12 @@ In the following exercises we will use the lemma:
   `sub_nonneg : 0 ≤ y - x ↔ x ≤ y`
 -/
 
-example {a b c : ℝ} : c + a ≤ c + b ↔ a ≤ b := by {
+example {a b c : ℝ} : c + a ≤ c + b ↔ a ≤ b := by
   rw [← sub_nonneg]
   have key : (c + b) - (c + a) = b - a := by-- Here we introduce an intermediate statement named key
     ring   -- and prove it in an indented block (here this block is only one line long)
   rw [key] -- we can now use `key`. This `rw` uses an equality result, not an equivalence
   rw [sub_nonneg] -- and switch back to reach the tautology a ≤ b ↔ a ≤ b
-}
 
 /-
 Let's prove a variation
@@ -160,7 +190,6 @@ example (a b : ℝ) (hb : 0 ≤ b) : a ≤ a + b := by
     a = a + 0 := by ring
     _ ≤ a + b := by exact (add_le_add_iff_left a).2 hb
 
-
 /-
 ## Proving equivalences
 
@@ -201,6 +230,42 @@ example (a b : ℝ) : a = b ↔ b - a = 0 := by
 
 end Implication
 
+namespace Negation
+
+/-
+# Negation statements
+
+Next we'll look at `False` and negation statements. `False` is defined to
+be a `Prop` with no terms. Meanwhile, negation statements are statements
+beginning with `¬`, which you can type with `\not`. Given a proposition `P`,
+`¬ P` is defined to mean `P → False`, so it's an implication statement in disguise.
+-/
+example (P : Prop) : P → ¬¬ P := by
+  intro hP
+  intro hnotP
+  apply hnotP
+  exact hP
+
+example (P : Prop) : P → ¬¬ P := by
+  intro hP
+  intro hnotP
+  apply hnotP
+  exact hP
+
+/- To derive another proposition from a proof of `False`, we use the `exfalso` tactic: -/
+example (P : Prop) : False → P := by
+  intro hFalse
+  exfalso
+  exact hFalse
+
+/- Finally, note that `x ≠ y` is notation for `¬(x = y)`. -/
+example (a b : ℕ) : a ≠ b → b ≠ a := by
+  intro hab hnot
+  apply hab
+  rw [hnot]
+
+end Negation
+
 namespace UniversalQuantifier
 
 /- # Universal quantifiers
@@ -235,7 +300,7 @@ We will also use the `rfl` tactic, which proves equalities that are true
 by definition (in a very strong sense), it stands for "reflexivity".
 -/
 
-example (f g : ℝ → ℝ) (hf : even_fun f) (hg : even_fun g) : even_fun (f + g) := by {
+example (f g : ℝ → ℝ) (hf : even_fun f) (hg : even_fun g) : even_fun (f + g) := by
   -- Our assumption on that f is even means ∀ x, f (-x) = f x
   unfold even_fun at hf
   -- and the same for g
@@ -250,7 +315,6 @@ example (f g : ℝ → ℝ) (hf : even_fun f) (hg : even_fun g) : even_fun (f + 
                _ = f x + g (-x)     := by rw [hf x]
                _ = f x + g x        := by rw [hg x]
                _ = (f + g) x        := by rfl
-}
 
 
 /-
@@ -276,12 +340,11 @@ simply need to move the cursor inside the list.
 Hence we can compress the above proof to:
 -/
 
-example (f g : ℝ → ℝ) : even_fun f → even_fun g → even_fun (f + g) := by {
+example (f g : ℝ → ℝ) : even_fun f → even_fun g → even_fun (f + g) := by
   intro hf hg x
   calc
     (f + g) (-x) = f (-x) + g (-x)  := by rfl
                _ = f x + g x        := by rw [hf, hg]
-}
 
 /-
 Now let's practice. Recall that if you need to learn how to type a unicode
@@ -326,22 +389,23 @@ use the `specialize` tactic to replace `hf` by its specialization to the relevan
  -/
 
 example (f g : ℝ → ℝ) (hf : non_decreasing f) (hg : non_decreasing g) :
-    non_decreasing (g ∘ f) := by {
+    non_decreasing (g ∘ f) := by
   intro x₁ x₂ h
-  specialize hf x₁ x₂ h
+  specialize hf x₁
+  specialize hf x₂
+  specialize hf h
   exact hg (f x₁) (f x₂) hf
-}
 
 /-
 This `specialize` tactic is mostly useful for exploration, or in preparation for rewriting
 in the assumption. One can very often replace its use by using more complicated expressions
 directly involving the original assumption, as in the next variation:
 -/
+
 example (f g : ℝ → ℝ) (hf : non_decreasing f) (hg : non_decreasing g) :
-    non_decreasing (g ∘ f) := by {
+    non_decreasing (g ∘ f) := by
   intro x₁ x₂ h
   exact hg (f x₁) (f x₂) (hf x₁ x₂ h)
-}
 
 /-
 Let's see how backward reasoning would look like here.
@@ -350,7 +414,7 @@ using so-called unification.
 -/
 
 example (f g : ℝ → ℝ) (hf : non_decreasing f) (hg : non_decreasing g) :
-    non_decreasing (g ∘ f) := by {
+    non_decreasing (g ∘ f) := by
   -- Let x₁ and x₂ be real numbers such that x₁ ≤ x₂
   intro x₁ x₂ h
   -- We need to prove (g ∘ f) x₁ ≤ (g ∘ f) x₂.
@@ -360,13 +424,46 @@ example (f g : ℝ → ℝ) (hf : non_decreasing f) (hg : non_decreasing g) :
   apply hf
   -- and on x₁ and x₂
   exact h
-}
 
 example (f g : ℝ → ℝ) (hf : non_decreasing f) (hg : non_increasing g) :
     non_increasing (g ∘ f) := by
   intro x₁ x₂ h
   apply hg
   exact hf x₁ x₂ h
+
+/- More exmaples -/
+
+example : ∀ P : Prop, False → P := by
+  intro P hFalse
+  exfalso
+  exact hFalse
+
+section
+variable {α β γ : Type}
+
+def Injective (f : α → β) : Prop :=
+  ∀ x y, f x = f y → x = y
+
+example (f : α → β) (g : β → γ) (hf : Injective f) (hg : Injective g) :
+    Injective (g ∘ f) := by
+  unfold Injective at hf hg ⊢
+  intro X Y hXY
+  apply hf
+  apply hg
+  exact hXY
+
+/- If you want to see what's going on better, you can use the `specialize`
+tactic to partially apply a local hypothesis to some inputs. -/
+example (f : α → β) (g : β → γ) (hf : Injective f) (hg : Injective g) :
+    Injective (g ∘ f) := by
+  intro X Y hXY
+  unfold Injective at hf
+  specialize hf X Y
+  apply hf
+  specialize hg (f X) (f Y)
+  apply hg
+  exact hXY
+end
 
 /- # Finding lemmas
 
@@ -414,21 +511,19 @@ Furthermore, we can decompose conjunction and equivalences.
   gives two new assumptions `hPQ : P → Q` and `hQP : Q → P`.
 -/
 
-example (p q r s : Prop) (h : p → r) (h' : q → s) : p ∧ q → r ∧ s := by {
+example (p q r s : Prop) (h : p → r) (h' : q → s) : p ∧ q → r ∧ s := by
   intro hpq
   rcases hpq with ⟨hp, hq⟩
   constructor
   · exact h hp
   · exact h' hq
-}
 
 /- One can also prove a conjunction without the constructor tactic by gathering both sides
 using the `⟨`/`⟩` brackets, so the above proof can be rewritten as. -/
 
-example (p q r s : Prop) (h : p → r) (h' : q → s) : p ∧ q → r ∧ s := by {
+example (p q r s : Prop) (h : p → r) (h' : q → s) : p ∧ q → r ∧ s := by
   intro hpq
   exact ⟨h hpq.1, h' hpq.2⟩
-}
 
 /- You can choose your own style in the next exercise. -/
 
@@ -479,23 +574,29 @@ example (n : ℕ) (h : ∃ k : ℕ, n = k + 1) : n > 0 := by
   exact Nat.succ_pos k₀
 
 
-/-
-The next exercises use divisibility in ℤ (beware the ∣ symbol which is
-not ASCII).
+/- We can use an `∃` statement by deconstructing it and replacing
+`∃ x, P x` with a term `x : α` and a hypothesis `hx : P x`. -/
+example (α : Type) (P : α → Prop) (h : ∃ x, P x) : ¬ (∀ x, ¬ P x) := by
+  intro hnot
+  rcases h with ⟨x, hx⟩
+  apply hnot
+  exact hx
 
-By definition, `a ∣ b ↔ ∃ k, b = a*k`, so you can prove `a ∣ b` using the
-`use` tactic.
--/
+example (α : Type) (P Q : α → Prop) (h : ∃ x, P x ∧ Q x) :
+    ∃ x, Q x ∧ P x := by
+  rcases h with ⟨x, hPx, hQx⟩
+  use x, hQx, hPx
 
-example (a b c : ℤ) (h₁ : a ∣ b) (h₂ : b ∣ c) : a ∣ c := by
-  rcases h₁ with ⟨k, hk⟩
-  rcases h₂ with ⟨l, hl⟩
-  use k*l
-  calc
-    c = b*l   := hl
-    _ = (a*k)*l := by rw [hk]
-    _ = a*(k*l) := by ring
+example (α : Type) (P Q : α → Prop) (h : ∃ x, P x ∧ Q x) :
+    ∃ x, Q x ∧ P x := by
+  rcases h with ⟨x, hPx, hQx⟩
+  constructor
+  · use hQx, hPx
 
+example (α : Type) (P Q : α → Prop) :
+    (∃ x, P x ∧ Q x) → ∃ x, Q x ∧ P x := by
+  rintro ⟨x, hPx, hQx⟩
+  use x, hQx, hPx
 
 /-
 We can now start combining quantifiers, using the definition
@@ -510,3 +611,59 @@ example (f g : ℝ → ℝ) (h : Surjective (g ∘ f)) : Surjective g := by
   exact hw
 
 end ExistentialQuantifier
+
+namespace ClassicalLogic
+
+/- ## Classical logic -/
+
+variable (P Q : Prop) (α : Type)
+
+/- To prove this we need to use classical logic, and apply the law of excluded middle: -/
+lemma not_not : ¬¬P → P := by
+  by_cases hP : P -- we case-split on `P ∨ ¬P`
+  · intro h
+    assumption
+  · intro h
+    exfalso
+    exact h hP
+
+/- The tactic `by_contra` just applies `not_not`: -/
+example : ¬¬P → P := by
+  intro hP
+  by_contra hP'
+  exact hP hP'
+
+/- You can use `not_not` to prove the following lemma directly.
+Alternatively, there are various tactics which use classical logic
+and are useful here: -/
+example : ¬(P → Q) → P ∧ ¬Q := by
+  tauto
+/- `tauto` can prove pretty much everything in this file so far. -/
+
+/- `push_neg` simplifies negation statements by "pushing" the
+negation as far inside the statement as possible: -/
+example : ¬(P → Q) → P ∧ ¬Q := by
+  push_neg
+  intro hP
+  assumption
+
+/- We can also `push_neg` at a hypothesis: -/
+example (P : α → Prop) (h : ¬∀ x, ¬P x) : ∃ x, P x := by
+  push_neg at h
+  assumption
+
+/- And `push_neg` can also simplify inequalities: -/
+example : ¬(∃ n : ℕ, ¬(3 < n) ∧ ¬(n ≤ 5)) := by
+  push_neg
+  intro n
+  tauto
+
+/- `contrapose` replaces a `p → q` goal with the contrapositive,
+`¬q → ¬p`. `contrapose!` combines this with `push_neg`. -/
+example : ¬(P → Q) → P ∧ ¬Q := by
+  contrapose
+  push_neg
+  intro hPQ
+  assumption
+
+end ClassicalLogic
