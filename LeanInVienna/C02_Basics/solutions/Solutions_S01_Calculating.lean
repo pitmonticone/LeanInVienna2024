@@ -1,35 +1,8 @@
 import LeanInVienna.Common
 import Mathlib.Data.Real.Basic
 
-example (a b c : ℝ) : c * b * a = b * (a * c) := by
-  rw [mul_comm c b]
-  rw [mul_assoc b c a]
-  rw [mul_comm c a]
-
-example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
-  rw [← mul_assoc a b c]
-  rw [mul_comm a b]
-  rw [mul_assoc b a c]
-
-example (a b c : ℝ) : a * (b * c) = b * (c * a) := by
-  rw [mul_comm]
-  rw [mul_assoc]
-
-example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
-  rw [← mul_assoc]
-  rw [mul_comm a]
-  rw [mul_assoc]
-
-example (a b c d e f : ℝ) (h : b * c = e * f) : a * b * c * d = a * e * f * d := by
-  rw [mul_assoc a]
-  rw [h]
-  rw [← mul_assoc]
-
-example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 := by
-  rw [hyp]
-  rw [hyp']
-  rw [mul_comm]
-  rw [sub_self]
+/- The following exercises with `calc` blocks from *The Mechanics of Proof* by Heather Macbeth.
+ The solutions are provided by Pietro Monticone. -/
 
 example {a b : ℚ} (h1 : a - b = 4) (h2 : a * b = 1) : (a + b) ^ 2 = 20 :=
   calc
@@ -188,3 +161,33 @@ example {c : ℚ} (h1 : 4 * c + 1 = 3 * c - 2) : c = -3 := by
     c = 4 * c + 1 - 3 * c + 2 -3 := by ring
     _ = 3 * c - 2 - 3 * c + 2 -3 := by rw [h1]
     _ = -3 := by ring
+
+example (a b c : ℝ) : c * b * a = b * (a * c) := by
+  rw [mul_comm c b]
+  rw [mul_assoc b c a]
+  rw [mul_comm c a]
+
+example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
+  rw [← mul_assoc a b c]
+  rw [mul_comm a b]
+  rw [mul_assoc b a c]
+
+example (a b c : ℝ) : a * (b * c) = b * (c * a) := by
+  rw [mul_comm]
+  rw [mul_assoc]
+
+example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
+  rw [← mul_assoc]
+  rw [mul_comm a]
+  rw [mul_assoc]
+
+example (a b c d e f : ℝ) (h : b * c = e * f) : a * b * c * d = a * e * f * d := by
+  rw [mul_assoc a]
+  rw [h]
+  rw [← mul_assoc]
+
+example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 := by
+  rw [hyp]
+  rw [hyp']
+  rw [mul_comm]
+  rw [sub_self]
