@@ -109,7 +109,8 @@ itself have? -/
 #check Type 3
 
 /- Define a function. -/
-def f (x : ℕ) := x + 3
+def f (x : ℕ) : ℕ := x + 3
+def g : ℕ → ℕ := fun x ↦ x + 3
 
 #check f
 
@@ -120,14 +121,20 @@ def f (x : ℕ) := x + 3
 def FermatLastTheorem :=
   ∀ x y z n : ℕ, n > 2 ∧ x * y * z ≠ 0 → x ^ n + y ^ n ≠ z ^ n
 
-#check FermatLastTheorem
+def FermatLastTheorem' : Prop := ∀ x y z n : ℕ, n > 2 ∧ x * y * z ≠ 0 → x ^ n + y ^ n ≠ z ^ n
+def FermatLastTheorem'' (x y z n : ℕ) (_ : n > 2 ∧ x * y * z ≠ 0) : Prop := x ^ n + y ^ n ≠ z ^ n
 
+#check FermatLastTheorem
+#print FermatLastTheorem
 /-
 Some expressions are terms of type `P` where `P` itself is a term of type `Prop`.
 Such an expression is a proof of the proposition `P`.
 -/
 
-theorem easy : 2 + 2 = 4 := rfl
+theorem easy : 2 + 2 = 4 := by
+  rfl
+
+theorem easy' : 2 + 2 = 4 := rfl
 
 #check easy
 
@@ -169,12 +176,12 @@ theorem my_add_le_add (x y z w : ℝ) (h₁ : x ≤ y) (h₂ : z ≤ w) :
     x + z ≤ y + w :=
   add_le_add h₁ h₂
 
-section
+section MySection
 
 variable (a b c d : ℝ)
 variable (h₁ : a ≤ b) (h₂ : c ≤ d)
 
-#check @my_add_le_add
+#check my_add_le_add
 #check my_add_le_add a b
 #check my_add_le_add a b c d h₁
 #check my_add_le_add _ _ _ _ h₁
@@ -184,10 +191,10 @@ theorem my_add_le_add' {x y z w : ℝ} (h₁ : x ≤ y) (h₂ : z ≤ w) :
     x + z ≤ y + w :=
   add_le_add h₁ h₂
 
-#check my_add_le_add' h₁
+#check @my_add_le_add'
 #check my_add_le_add' h₁ h₂
 
-end
+end MySection
 
 /- Let's compare `def` vs. `theorem` vs. `example`. -/
 def my_add_le_add'' (x y z w : ℝ) (h₁ : x ≤ y) (h₂ : z ≤ w) :
@@ -221,11 +228,6 @@ the properties of all commutative rings.
 
 example (a b c : ℝ) : (a * b) * c = b * (a * c) := by ring
 
-/- It's your turn, replace the word sorry below by a proof. In this case the proof is just `ring`.
-After you prove something, you will see a small "No goals" message, which is the indication that
-your proof is finished.
--/
-
 example (a b : ℝ) : (a+b)^2 = a^2 + 2*a*b + b^2 := by ring
 
 /- In the first example above, take a closer look at where Lean displays parentheses.
@@ -237,7 +239,7 @@ that is used by the `ring` tactic when needed.
 
 
 /-
-## The rewriting tactic
+## Rewriting
 
 Let us now see how to compute using assumptions relating the involved numbers.
 This uses the fundamental property of equality: if two
@@ -250,36 +252,9 @@ example (a b c d e : ℝ) (h : a = b + c) (h' : b = d - e) : a + e = d + c := by
   rw [h']
   ring
 
-
-/-
-Note the `rw` tactic changes the current goal. After the first line of the above proof,
-the new goal is `b + c + e = d + c`. So you can read this first proof step as saying:
-"I wanted to prove, `a + e = d + c` but, since assumption `h` tells me `a = b + c`,
-it suffices to prove `b + c + e = d + c`."
-
-One can actually do several rewritings in one command.
--/
-example (a b c d e : ℝ) (h : a = b + c) (h' : b = d - e) : a + e = d + c := by
-  rw [h, h']
-  ring
-
-/-
-Note that putting your cursor between `h` and`h'` shows you the intermediate proof state.
-
-Note also the subtle background color change in the tactic state that show you in green
-what is new and in red what is about to change.
-
-Now try it yourself. Note that ring can still do calculations,
-but it doesn't use the assumptions `h` and `h'`
--/
-
-example (a b c d : ℝ) (h : b = d + d) (h' : a = b + c) : a + b = c + 4 * d := by
-  rw [h', h]
-  ring
-
 /- ## Rewriting with a lemma
 
-In the previous examples, we rewrote the goal using a local assumption. But we can
+In the previous example, we rewrote the goal using a local assumption. But we can
 also use lemmas. For instance let us prove a lemma about exponentiation.
 Since `ring` only knows how to prove things from the axioms of rings,
 it doesn't know how to work with exponentiation.
@@ -385,7 +360,6 @@ example (a b c d : ℝ) (h : c = b*a - d) (h' : d = a*b) : c = 0 := by
     c = b*a - d   := by rw [h]
     _ = b*a - a*b := by rw [h']
     _ = 0         := by ring
-
 
 /-
 Let's do some exercises using `calc`.
