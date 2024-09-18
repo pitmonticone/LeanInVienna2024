@@ -45,6 +45,7 @@ example : s ∩ (t ∪ u) ⊆ s ∩ t ∪ s ∩ u := by
 
 example : s ∩ t ∪ s ∩ u ⊆ s ∩ (t ∪ u) := by
   sorry
+
 example : (s \ t) \ u ⊆ s \ (t ∪ u) := by
   intro x xstu
   have xs : x ∈ s := xstu.1.1
@@ -65,6 +66,7 @@ example : (s \ t) \ u ⊆ s \ (t ∪ u) := by
 
 example : s \ (t ∪ u) ⊆ (s \ t) \ u := by
   sorry
+
 example : s ∩ t = t ∩ s := by
   ext x
   simp only [mem_inter_iff]
@@ -84,6 +86,7 @@ example : s ∩ t = t ∩ s := by
 
 example : s ∩ t = t ∩ s :=
     Subset.antisymm sorry sorry
+
 example : s ∩ (s ∪ t) = s := by
   sorry
 
@@ -114,22 +117,10 @@ example (x : ℕ) (h : x ∈ (∅ : Set ℕ)) : False :=
 example (x : ℕ) : x ∈ (univ : Set ℕ) :=
   trivial
 
+#check Nat.Prime.eq_two_or_odd'
+
 example : { n | Nat.Prime n } ∩ { n | n > 2 } ⊆ { n | ¬Even n } := by
   sorry
-
-#print Prime
-
-#print Nat.Prime
-
-example (n : ℕ) : Prime n ↔ Nat.Prime n :=
-  Nat.prime_iff.symm
-
-example (n : ℕ) (h : Prime n) : Nat.Prime n := by
-  rw [Nat.prime_iff]
-  exact h
-
-example (n : ℕ) (h : Prime n) : Nat.Prime n := by
-  rwa [Nat.prime_iff]
 
 end
 
@@ -191,10 +182,6 @@ example : (⋂ i, A i ∩ B i) = (⋂ i, A i) ∩ ⋂ i, B i := by
   · exact h1 i
   exact h2 i
 
-
-example : (s ∪ ⋂ i, A i) = ⋂ i, A i ∪ s := by
-  sorry
-
 def primes : Set ℕ :=
   { x | Nat.Prime x }
 
@@ -212,6 +199,9 @@ example : (⋂ p ∈ primes, { x | ¬p ∣ x }) ⊆ { x | x = 1 } := by
   contrapose!
   simp
   apply Nat.exists_prime_and_dvd
+
+#check Nat.exists_infinite_primes
+#check eq_univ_of_forall
 
 example : (⋃ p ∈ primes, { x | x ≤ p }) = univ := by
   sorry
