@@ -158,24 +158,30 @@ example : ∀ m n : Nat, Even n → Even (m * n) := by
   -- Resolve by using ring properties.
   ring
 
-/-
-The ability to build a proof in small steps with incremental feedback is extremely powerful.
-For that reason, tactic proofs are often easier and quicker to write than proof terms.
+/- A simple example theorem to showcase implicit arguments, sections, variables, namespaces. -/
+theorem my_add_le_add (x y z w : ℝ) (h₁ : x ≤ y) (h₂ : z ≤ w) :
+    x + z ≤ y + w :=
+  add_le_add h₁ h₂
 
-In our example, the tactic proof can also be reduced to a one-liner:
--/
-example : ∀ m n : Nat, Even n → Even (m * n) := by
-  rintro m n ⟨k, hk⟩; use m * k; rw [hk]; ring
+section
 
-/-
-Here we have used tactics to carry out small proof steps. But they can also provide substantial
-automation, and justify longer calculations and bigger inferential steps.
+variable (a b c d : ℝ)
+variable (h₁ : a ≤ b) (h₂ : c ≤ d)
 
-For example, we can invoke Lean's simplifier with specific rules for simplifying statements about
-parity to prove our theorem automatically.
--/
-example : ∀ m n : Nat, Even n → Even (m * n) := by
-  intros; simp [*, parity_simps]
+#check @my_add_le_add
+#check my_add_le_add a b
+#check my_add_le_add a b c d h₁
+#check my_add_le_add _ _ _ _ h₁
+#check my_add_le_add _ _ _ _ h₁ h₂
+
+theorem my_add_le_add' {x y z w : ℝ} (h₁ : x ≤ y) (h₂ : z ≤ w) :
+    x + z ≤ y + w :=
+  add_le_add h₁ h₂
+
+#check my_add_le_add' h₁
+#check my_add_le_add' h₁ h₂
+
+end
 
 /-
 # Calculating
