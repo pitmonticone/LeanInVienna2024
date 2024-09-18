@@ -8,7 +8,12 @@ theorem my_lemma4 :
   intro x y ε epos ele1 xlt ylt
   calc
     |x * y| = |x| * |y| := by apply abs_mul
-    _ ≤ |x| * ε := by apply mul_le_mul; linarith; linarith; apply abs_nonneg; apply abs_nonneg;
+    _ ≤ |x| * ε := by
+      apply mul_le_mul
+      · linarith
+      · linarith
+      · apply abs_nonneg
+      · apply abs_nonneg _
     _ < 1 * ε := by rw [mul_lt_mul_right epos]; linarith
     _ = ε := by apply one_mul
 
