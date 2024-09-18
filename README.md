@@ -83,6 +83,7 @@ lake exe cache get
 
 ## References
 
+- [Lean 4 tactics for beginners](https://github.com/madvorak/lean4-tactics)
 - [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)
 - [Theorem Proving in Lean](https://leanprover.github.io/theorem_proving_in_lean4/title_page.html)
 - [Glimpse Of Lean](https://github.com/PatrickMassot/GlimpseOfLean)
