@@ -60,7 +60,7 @@ We can also use backward reasoning using the `apply` tactic.
 example (a : ℝ) (ha : 0 < a) : 0 < (a^2)^2 := by
   apply sq_pos_of_pos -- Thanks to `sq_pos_of_pos`, it suffices to prove `0 < a^2`
   apply sq_pos_of_pos -- Thanks to `sq_pos_of_pos`, it suffices to prove `0 < a`
-  exact ha -- this is exactly our assumption `ha`.
+  exact ha            -- This is exactly our assumption `ha`.
 
 /-
 Try to do the next exercise using the lemma `add_pos : 0 < x → 0 < y → 0 < x + y`.
@@ -88,10 +88,10 @@ of `by` and `exact` and directly put the argument of `exact` after the `:=`.
 -/
 
 example (a : ℝ) (ha : 0 < a) : 0 < (a^2)^2 := by
-  have h2 : 0 < a^2 := by     -- we declare `0 < a^2` as a subgoal
-    apply sq_pos_of_pos  -- we start proving the subgoal
-    exact ha             -- this line is indented, so part of the proof of the subgoal
-  exact sq_pos_of_pos h2 -- we finished the subgoal, and now we prove the main goal using it.
+  have h2 : 0 < a^2 := by     -- We declare `0 < a^2` as a subgoal
+    apply sq_pos_of_pos       -- We start proving the subgoal
+    exact ha                  -- This line is indented, so part of the proof of the subgoal
+  exact sq_pos_of_pos h2      -- We finished the subgoal, and now we prove the main goal using it.
 
 
 /- Now prove the same lemma as before using forwards reasoning. -/
@@ -369,14 +369,13 @@ def non_increasing (f : ℝ → ℝ) := ∀ x₁ x₂, x₁ ≤ x₂ → f x₁ 
 
 /- Let's be very explicit and use forward reasoning first. -/
 example (f g : ℝ → ℝ) (hf : non_decreasing f) (hg : non_decreasing g) :
-    non_decreasing (g ∘ f) := by {
+    non_decreasing (g ∘ f) := by
   -- Let x₁ and x₂ be real numbers such that x₁ ≤ x₂
   intro x₁ x₂ h
   -- Since f is non-decreasing, f x₁ ≤ f x₂.
   have step₁ : f x₁ ≤ f x₂ := hf x₁ x₂ h
   -- Since g is non-decreasing, we then get g (f x₁) ≤ g (f x₂).
   exact hg (f x₁) (f x₂) step₁
-}
 
 /-
 In the above proof, note how inconvenient it is to specify `x₁` and `x₂` in `hf x₁ x₂ h` since
