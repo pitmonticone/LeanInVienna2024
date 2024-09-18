@@ -21,6 +21,12 @@ def n : ℕ := 0
 def b1 : Bool := true  -- b1 is a Boolean
 def b2 : Bool := false
 
+/- Some useful fiagnostic commands:
+- `#check` prints the type of an expression;
+- `#eval` evaluates an expression;
+- `#lint` checks the file satisfies some style guidelines.
+-/
+
 /- Check their types. -/
 
 #check 2 + 2        -- ℕ
