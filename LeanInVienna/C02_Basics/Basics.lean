@@ -150,7 +150,7 @@ example : ∀ m n : Nat, Even n → Even (m * n) := fun m n ⟨k, (hk : n = k + 
 
 /- The *proof term* can be compressed to a single line: -/
 example : ∀ m n : Nat, Even n → Even (m * n) :=
-fun m n ⟨k, hk⟩ ↦ ⟨m * k, by rw [hk, mul_add]⟩
+  fun m n ⟨k, hk⟩ ↦ ⟨m * k, by rw [hk, mul_add]⟩
 
 /- The following is, instead, a *tactic-style* proof of the same theorem, where lines
 starting with `--` are comments, hence ignored by Lean: -/
@@ -188,6 +188,24 @@ theorem my_add_le_add' {x y z w : ℝ} (h₁ : x ≤ y) (h₂ : z ≤ w) :
 #check my_add_le_add' h₁ h₂
 
 end
+
+/- Let's compare `def` vs. `theorem` vs. `example`. -/
+def my_add_le_add'' (x y z w : ℝ) (h₁ : x ≤ y) (h₂ : z ≤ w) :
+    x + z ≤ y + w :=
+  add_le_add h₁ h₂
+
+theorem my_add_le_add''' (x y z w : ℝ) (h₁ : x ≤ y) (h₂ : z ≤ w) :
+    x + z ≤ y + w :=
+  add_le_add h₁ h₂
+
+example (x y z w : ℝ) (h₁ : x ≤ y) (h₂ : z ≤ w) :
+    x + z ≤ y + w :=
+  add_le_add h₁ h₂
+
+#check my_add_le_add''
+
+#check my_add_le_add'''
+
 
 /-
 # Calculating
