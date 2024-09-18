@@ -16,6 +16,7 @@
     // Remove any trailing whitespace on save
     "files.trimTrailingWhitespace": true,
     "files.exclude": {
+        "**/.gitignore": true,
         "**/.lake": true,
         "**/.vscode": true,
         "**/images": true,
