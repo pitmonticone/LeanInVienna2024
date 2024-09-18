@@ -667,3 +667,61 @@ example : ¬(P → Q) → P ∧ ¬Q := by
   assumption
 
 end ClassicalLogic
+
+section Exercises
+
+/-!
+## Additional Exercises
+-/
+
+variable (p q : Prop)
+variable (r s : ℕ → Prop)
+
+example : p ∧ q → q ∧ p := by
+  intro hpq
+  rcases hpq with ⟨hp, hq⟩
+  exact ⟨hq, hp⟩
+
+example : p ∨ q → q ∨ p := by
+  intro hpq
+  rcases hpq with (hp|hq)
+  · right
+    assumption
+  · left
+    assumption
+
+example : (∃ x, r x ∧ s x) → (∃ x, r x) ∧ (∃ x, s x) := by
+  intro h
+  rcases h with ⟨x, hrx, hsx⟩
+  constructor
+  · use x
+  · use x
+
+example : ∀ z, (∃ x y, r x ∧ s y ∧ y = z) → ∃ x, r x ∧ s z := by
+  intro z h
+  rcases h with ⟨x, y, hr, hx, rfl⟩
+  use x
+
+example : ¬¬(¬¬p → p) := by
+  intro h
+  apply h
+  intro hnnp
+  exfalso
+  apply hnnp
+  intro hp
+  apply h
+  intro
+  assumption
+
+example : ∃ x, r x → ∀ y, r y := by
+  by_cases h : ∀ y, r y
+  · use 0
+    intro _
+    assumption
+  · push_neg at h
+    rcases h with ⟨w, hw⟩
+    use w
+    intro hw'
+    contradiction
+
+end Exercises
