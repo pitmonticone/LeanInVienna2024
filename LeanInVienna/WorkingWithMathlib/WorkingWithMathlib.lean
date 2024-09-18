@@ -4,7 +4,7 @@ import Mathlib.CategoryTheory.Functor.Currying
 
 open Real CategoryTheory Limits
 
--- Firs: if there is a high-powered tactic that can solve your goal, use it!
+-- First: if there is a high-powered tactic that can solve your goal, use it!
 
 example {a b c d : ℕ} (h₁ : a ≤ c) (H₂ : b ≤ d) : a + b ≤ c + d := by
   sorry
