@@ -12,7 +12,7 @@ example (h₀ : a ≤ b) (h₁ : b < c) (h₂ : c ≤ d) (h₃ : d < e) : a < e 
 example (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) := by
   apply add_le_add_left
   rw [exp_le_exp]
-  apply add_le_add_left h₀
+  exact add_le_add_left h₀ a
 
 -- an alternative using `linarith`.
 example (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) := by
@@ -24,7 +24,7 @@ example (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) := by
 example (h : a ≤ b) : log (1 + exp a) ≤ log (1 + exp b) := by
   have h₀ : 0 < 1 + exp a := by linarith [exp_pos a]
   apply log_le_log h₀
-  apply add_le_add_left (exp_le_exp.mpr h)
+  exact add_le_add_left (exp_le_exp.mpr h) 1
 
 -- SOLUTION.
 example (h : a ≤ b) : c - exp b ≤ c - exp a := by
@@ -39,14 +39,14 @@ theorem fact1 : a * b * 2 ≤ a ^ 2 + b ^ 2 := by
   have h : 0 ≤ a ^ 2 - 2 * a * b + b ^ 2
   calc
     a ^ 2 - 2 * a * b + b ^ 2 = (a - b) ^ 2 := by ring
-    _ ≥ 0 := by apply pow_two_nonneg
+    _ ≥ 0 := pow_two_nonneg (a - b)
   linarith
 
 theorem fact2 : -(a * b) * 2 ≤ a ^ 2 + b ^ 2 := by
   have h : 0 ≤ a ^ 2 + 2 * a * b + b ^ 2
   calc
     a ^ 2 + 2 * a * b + b ^ 2 = (a + b) ^ 2 := by ring
-    _ ≥ 0 := by apply pow_two_nonneg
+    _ ≥ 0 := pow_two_nonneg (a + b)
   linarith
 
 example : |a * b| ≤ (a ^ 2 + b ^ 2) / 2 := by
@@ -54,6 +54,6 @@ example : |a * b| ≤ (a ^ 2 + b ^ 2) / 2 := by
   apply abs_le'.mpr
   constructor
   · rw [le_div_iff₀ h]
-    apply fact1
-  rw [le_div_iff₀ h]
-  apply fact2
+    exact fact1 a b
+  · rw [le_div_iff₀ h]
+    exact fact2 a b
