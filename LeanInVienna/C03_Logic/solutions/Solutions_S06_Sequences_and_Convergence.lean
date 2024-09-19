@@ -101,9 +101,9 @@ theorem convergesTo_unique {s : ℕ → ℝ} {a b : ℝ}
   have : |a - b| > 0 := by
     apply lt_of_le_of_ne
     · apply abs_nonneg
-    intro h''
-    apply abne
-    apply eq_of_abs_sub_eq_zero h''.symm
+    · intro h''
+      apply abne
+      exact eq_of_abs_sub_eq_zero h''.symm
   let ε := |a - b| / 2
   have εpos : ε > 0 := by
     change |a - b| / 2 > 0
@@ -113,10 +113,10 @@ theorem convergesTo_unique {s : ℕ → ℝ} {a b : ℝ}
   let N := max Na Nb
   have absa : |s N - a| < ε := by
     apply hNa
-    apply le_max_left
+    exact le_max_left Na Nb
   have absb : |s N - b| < ε := by
     apply hNb
-    apply le_max_right
+    exact le_max_right Na Nb
   have : |a - b| < |a - b|
   calc
     |a - b| = |(-(s N - a)) + (s N - b)| := by
