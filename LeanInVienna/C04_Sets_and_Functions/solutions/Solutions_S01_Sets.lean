@@ -17,8 +17,8 @@ example : s \ (t ∪ u) ⊆ (s \ t) \ u := by
   use xs
   · intro xt
     exact xntu (Or.inl xt)
-  intro xu
-  apply xntu (Or.inr xu)
+  · intro xu
+    exact xntu (Or.inr xu)
 
 example : s ∩ t = t ∩ s :=
     Subset.antisymm
