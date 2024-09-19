@@ -81,17 +81,17 @@ example (h₀ : x ∣ y) (h₁ : y ∣ z) : x ∣ z :=
 
 example : x ∣ y * x * z := by
   apply dvd_mul_of_dvd_left
-  apply dvd_mul_left
+  exact dvd_mul_left x y
 
 example : x ∣ x ^ 2 := by
-  apply dvd_mul_left
+  exact dvd_mul_left x (x.pow 1)
 
 example (h : x ∣ w) : x ∣ y * (x * z) + x ^ 2 + w ^ 2 := by
   apply dvd_add
   · apply dvd_add
     · apply dvd_mul_of_dvd_right
       apply dvd_mul_right
-    apply dvd_mul_left
+    · apply dvd_mul_left
   rw [pow_two]
   apply dvd_mul_of_dvd_right
   exact h
