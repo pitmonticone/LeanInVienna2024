@@ -136,6 +136,6 @@ example (P Q : Prop) : P → Q ↔ ¬P ∨ Q := by
       exact h'
   rintro (h | h)
   · intro h'
-    exact absurd h' h
+    contradiction
   · intro
-    exact h
+    assumption
