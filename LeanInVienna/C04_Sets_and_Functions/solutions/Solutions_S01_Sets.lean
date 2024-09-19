@@ -8,8 +8,12 @@ open Set
 
 example : s ∩ t ∪ s ∩ u ⊆ s ∩ (t ∪ u) := by
   rintro x (⟨xs, xt⟩ | ⟨xs, xu⟩)
-  · use xs; left; exact xt
-  · use xs; right; exact xu
+  · use xs
+    left
+    exact xt
+  · use xs
+    right
+    exact xu
 
 example : s \ (t ∪ u) ⊆ (s \ t) \ u := by
   rintro x ⟨xs, xntu⟩
@@ -25,11 +29,14 @@ example : s ∩ t = t ∩ s :=
     (fun _ ⟨xs, xt⟩ ↦ ⟨xt, xs⟩) fun _ ⟨xt, xs⟩ ↦ ⟨xs, xt⟩
 
 example : s ∩ (s ∪ t) = s := by
-  ext x; constructor
+  ext x
+  constructor
   · rintro ⟨xs, _⟩
     exact xs
   · intro xs
-    use xs; left; exact xs
+    use xs
+    left
+    exact xs
 
 example : s ∪ s ∩ t = s := by
   ext x; constructor
@@ -50,10 +57,12 @@ example : s \ t ∪ t = s ∪ t := by
   rintro (xs | xt)
   · left
     use xs
-  right; exact xt
+  right
+  exact xt
 
 example : s \ t ∪ t \ s = (s ∪ t) \ (s ∩ t) := by
-  ext x; constructor
+  ext x
+  constructor
   · rintro (⟨xs, xnt⟩ | ⟨xt, xns⟩)
     · constructor
       left
@@ -71,7 +80,9 @@ example : s \ t ∪ t \ s = (s ∪ t) \ (s ∩ t) := by
     intro xt
     apply nxst
     constructor <;> assumption
-  · right; use xt; intro xs
+  · right
+    use xt
+    intro xs
     apply nxst
     constructor <;> assumption
 
