@@ -90,7 +90,7 @@ end
 | `⋃`        | `\Union`        | Union of indexed family sets                  |
 | `⋂`        | `\Inter`        | Intersection of indexed family sets           |
 | `\`        | `\setminus`     | Difference of sets                            |
-| `∅`       | `\empty`        | The empty set                                 |
+| `∅`        | `\empty`        | The empty set                                 |
 | `univ`     |                 | The universal set                             |
 | `''`       |                 | Image of set under function                   |
 | `⁻¹'`      | `\inv`  `'`     | Preimage of set under function                |
