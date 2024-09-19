@@ -37,11 +37,16 @@ To install Lean 4, please follow these instructions:
 
 ## Cloning this Repository
 
-In short: `git clone https://github.com/pitmonticone/LeanInVienna2024.git`
+To clone this repository, run the following command:
 
-[GitHub documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+```bash
+git clone https://github.com/pitmonticone/LeanInVienna2024.git
+```
+For detailed instructions, please refer to the [GitHub documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+on cloning repositories.
 
-After cloning the repository, you probably want to run:
+After successfully cloning the repository, navigate into the project directory and
+execute the following command to retrieve the necessary cached dependencies:
 
 ```
 cd LeanInVienna2024/
