@@ -93,3 +93,4 @@ lake exe cache get
 - [Glimpse Of Lean](https://github.com/PatrickMassot/GlimpseOfLean)
 - [The Mechanics of Proof](https://hrmacbeth.github.io/math2001/)
 - [Lean for the Curious Mathematician 2023](https://lftcm2023.github.io)
+- [Lean 4 Tactics Cheatsheet](lean-tactics.pdf)
