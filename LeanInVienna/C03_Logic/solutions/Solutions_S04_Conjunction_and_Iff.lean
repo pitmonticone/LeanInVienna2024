@@ -7,24 +7,24 @@ example {m n : ℕ} (h : m ∣ n ∧ m ≠ n) : m ∣ n ∧ ¬n ∣ m := by
   rcases h with ⟨h0, h1⟩
   constructor
   · exact h0
-  intro h2
-  apply h1
-  apply Nat.dvd_antisymm h0 h2
+  · intro h2
+    apply h1
+    exact Nat.dvd_antisymm h0 h2
 
 example {x y : ℝ} : x ≤ y ∧ ¬y ≤ x ↔ x ≤ y ∧ x ≠ y := by
   constructor
   · rintro ⟨h0, h1⟩
     constructor
     · exact h0
-    intro h2
-    apply h1
-    rw [h2]
+    · intro h2
+      apply h1
+      rw [h2]
   rintro ⟨h0, h1⟩
   constructor
   · exact h0
-  intro h2
-  apply h1
-  apply le_antisymm h0 h2
+  · intro h2
+    apply h1
+    exact le_antisymm h0 h2
 
 theorem aux {x y : ℝ} (h : x ^ 2 + y ^ 2 = 0) : x = 0 :=
   have h' : x ^ 2 = 0 := by linarith [pow_two_nonneg x, pow_two_nonneg y]
@@ -60,15 +60,15 @@ example : a < b ↔ a ≤ b ∧ a ≠ b := by
   · rintro ⟨h0, h1⟩
     constructor
     · exact h0
-    intro h2
-    apply h1
-    rw [h2]
+    · intro h2
+      apply h1
+      rw [h2]
   rintro ⟨h0, h1⟩
   constructor
   · exact h0
   intro h2
   apply h1
-  apply le_antisymm h0 h2
+  exact le_antisymm h0 h2
 
 end
 
@@ -86,8 +86,8 @@ example : a < b → b < c → a < c := by
   rintro ⟨h0, h1⟩ ⟨h2, _⟩
   constructor
   · apply le_trans h0 h2
-  intro h4
-  apply h1
-  apply le_trans h2 h4
+  · intro h4
+    apply h1
+    exact le_trans h2 h4
 
 end
