@@ -13,7 +13,7 @@ theorem my_lemma4 :
       · linarith
       · linarith
       · apply abs_nonneg
-      · apply abs_nonneg _
+      · apply abs_nonneg
     _ < 1 * ε := by rw [mul_lt_mul_right epos]; linarith
     _ = ε := by apply one_mul
 
@@ -29,23 +29,23 @@ variable (f g : ℝ → ℝ) (a b : ℝ)
 example (hfa : FnLb f a) (hgb : FnLb g b) : FnLb (fun x ↦ f x + g x) (a + b) := by
   intro x
   apply add_le_add
-  apply hfa
-  apply hgb
+  · exact hfa x
+  · exact hgb x
 
 example (nnf : FnLb f 0) (nng : FnLb g 0) : FnLb (fun x ↦ f x * g x) 0 := by
   intro x
   apply mul_nonneg
-  apply nnf
-  apply nng
+  · exact nnf x
+  · exact nng x
 
 example (hfa : FnUb f a) (hgb : FnUb g b) (nng : FnLb g 0) (nna : 0 ≤ a) :
     FnUb (fun x ↦ f x * g x) (a * b) := by
   intro x
   apply mul_le_mul
-  apply hfa
-  apply hgb
-  apply nng
-  apply nna
+  · exact hfa x
+  · exact hgb x
+  · exact nng x
+  · exact nna
 
 end
 
