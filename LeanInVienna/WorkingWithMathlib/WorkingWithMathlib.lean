@@ -6,27 +6,27 @@ open Real CategoryTheory Limits
 
 -- First: if there is a high-powered tactic that can solve your goal, use it!
 
-example {a b c d : ℕ} (h₁ : a ≤ c) (H₂ : b ≤ d) : a + b ≤ c + d := by
-  sorry
+example {a b c d : ℕ} (h₁ : a ≤ c) (h₂ : b ≤ d) : a + b ≤ c + d := by
+  gcongr
 
-example {a b c d : ℕ} (h₁ : a ≤ c) (H₂ : b ≤ d) : a + b + b + b ≤ c + d + d + d := by
-  sorry
+theorem foo {a b c d : ℕ} (h₁ : a ≤ c) (h₂ : b ≤ d) : a + b + b + b ≤ c + d + d + d := by
+  gcongr
 
 example : cos 0 = 1 := by
-  sorry
+  simp
 
 example {α : Type} (s t : Set α) : s \ (s ∪ t) = ∅ := by
-  sorry
+  aesop
 
 example {α β γ : Type} [TopologicalSpace α] [TopologicalSpace β] [TopologicalSpace γ] {f : α → β}
     {g : β → γ} (hf : Continuous f) (hg : Continuous g) : Continuous (g ∘ f) := by
-  sorry
+  fun_prop
 
 example {x : ℝ} : 0 ≤ x ^ 4 := by
-  sorry
+  positivity
 
 example {a b c d : ℝ} {hab : a < b} {hbc : c < d} : a + c < b + d := by
-  sorry
+  gcongr
 
 -- A broad overview over most basic parts of the library is given in the undergrad list:
 -- https://leanprover-community.github.io/undergrad.html
@@ -38,35 +38,44 @@ example {a b c d : ℝ} {hab : a < b} {hbc : c < d} : a + c < b + d := by
 -- in the mathlib docs for a bit: https://leanprover-community.github.io/mathlib4_docs/index.html
 
 -- Tools for finding things:
--- `excact?`, `apply?`, `hint` tactics for making progress on specific goals
+-- `exact?`, `apply?`, `hint` tactics for making progress on specific goals
 -- Loogle for precise (but possibly broad) searches
 -- LeanSearch for natural language search
 
 -- Example 1: Fundamental theorem of algebra
 
-example {p : Polynomial ℂ} (h : 0 < p.degree) : ∃ x, p.eval x = 0 := by
-  sorry
+example {p : Polynomial ℂ} (h : 0 < p.degree) : ∃ x, Polynomial.IsRoot p x := by
+  exact Complex.exists_root h -- Found via LeanSearch "fundamental theorme of algebra"
 
 -- Example 2: Let's try to find the first isomorphism theorem for modules
 
+-- Found via LeanSearch or Loogle "LinearMap.ker, LinearMap.range, LinearEquiv"
+
+#check LinearMap.quotKerEquivRange
+
 -- Example 3: Binary product functor
 
+#check prod.functor -- found via Loogle "CategoryTheory.Functor, CategoryTheory.Limits.HasBinaryProducts"
+#check uncurry -- found via Loogle 'CategoryTheory.Functor, "curry"'
+
 noncomputable example {C : Type} [Category C] [HasBinaryProducts C] : C × C ⥤ C :=
-  sorry
+  uncurry.obj prod.functor
 
 -- Example 4: Square of square root of real number is the original number
 
-example (x : ℝ) : x.sqrt ^ 2 = x := by
-  sorry
+-- Found via `apply?`
+example (x : ℝ) (hx : 0 ≤ x) : x.sqrt ^ 2 = x := by
+  exact sq_sqrt hx
 
 -- Example 5: Dimension of quotient space is difference of dimensions
 
-example {R M : Type} [Ring R] [AddCommGroup M] [Module R M] (N : Submodule R M) :
+example {R M : Type} [DivisionRing R] [AddCommGroup M] [Module R M] [FiniteDimensional R M] (N : Submodule R M) :
     FiniteDimensional.finrank R (M ⧸ N) =
       FiniteDimensional.finrank R M - FiniteDimensional.finrank R N := by
-  sorry
+  have := Submodule.finrank_quotient_add_finrank N -- Found via Loogle 'FiniteDimensional.finrank, "quot"'
+  omega
 
--- Example 6: If the number of vectors exceeds the dimension, then the set is linearly dependent
+#leansearch "finrank of quotient space is difference of dimensions"
 
 -- Some more LeanSearch examples:
 
