@@ -36,6 +36,19 @@ end
 
 #check integral_sin
 
+#eval (fun x : Nat ↦ x + 2) 2
+#eval (x : Nat ↦ x + 2) 2 -- 4
+
+macro x:ident ":" t:term " ↦ " y:term : term =>
+  `(fun $x : $t => $y)
+
+#eval (x : Nat ↦ x + 2) 2 -- 4
+
+macro x:ident " ↦ " y:term : term =>
+  `(fun $x  => $y)
+
+#eval (x ↦ x + 2) 2 -- 4
+
 -- Create new tactics using macros
 
 macro "fibonacci_induction" : tactic => `(tactic|(
@@ -91,6 +104,23 @@ theorem my_mul_one {G : Type} [Group G] {g : G} : g * 1 = g :=
   MulOneClass.mul_one g
 
 #check my_add_zero
+
+-- Add a command
+elab "#assertType " termStx:term " : " typeStx:term : command =>
+  open Lean Lean.Elab Command Term in
+  liftTermElabM
+    try
+      let tp ← elabType typeStx
+      discard $ elabTermEnsuringType termStx tp
+      synthesizeSyntheticMVarsNoPostponing
+      logInfo "success"
+    catch | _ => throwError "failure"
+
+#assertType 5  : Nat
+
+#assertType [] : Nat
+
+#min_imports
 
 -- Create a widget
 
