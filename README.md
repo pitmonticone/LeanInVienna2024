@@ -57,20 +57,20 @@ lake exe cache get
 
 | Date | Time | Speaker | Topic |
 |------|-----|---------|-------|
-| Sep 18 | 09:00 - 10:00 | Markus Himmel | [Introduction to Lean](LeanInVienna/C01_Introduction) |
+| Sep 18 | 09:00 - 10:00 | Markus Himmel | [Introduction to Lean](Presentations/introduction-to-lean.pdf) |
 | | 10:30 - 12:00 | Pietro Monticone | [Installation and Basics](LeanInVienna/C02_Basics) |
-| | 13:30 - 14:15 | Tomáš Skřivan | Scientific Computing in Lean |
+| | 13:30 - 14:15 | Tomáš Skřivan | [Scientific Computing in Lean](https://slides.com/lecopivo/scientific-computing-in-lean-5b89e4) |
 | | 14:15 - 15:30 | Pietro Monticone | [Logic (1/2)](LeanInVienna/C03_Logic) |
 | | 16:00 - 17:30 | Pietro Monticone | [Logic (2/2)](LeanInVienna/C03_Logic) |
-| Sep 19 | 9:00 - 09:45 | Moritz Firsching | Beginner's mistakes using Mathlib/Lean |
+| Sep 19 | 9:00 - 09:45 | Moritz Firsching | [Beginner's mistakes using Mathlib/Lean](https://docs.google.com/presentation/d/1jyDV72KMvnN0Edb7dOWgTYS0Visl5B5GOslf4E_y1wE) |
 | | 10:15 - 12:15 | Markus Himmel | [Sets and Functions](LeanInVienna/C04_Sets_and_Functions) |
-| | 13:45 - 14:30 | Markus Himmel | Working with Mathlib |
+| | 13:45 - 14:30 | Markus Himmel | [Working with Mathlib](LeanInVienna/WorkingWithMathlib) |
 | | 14:30 - 15:45 | Moritz Firsching | [Elementary Number Theory (1/2)](LeanInVienna/C05_Elementary_Number_Theory) |
 | | 16:15 - 17:30 | Moritz Firsching | [Elementary Number Theory (2/2)](LeanInVienna/C05_Elementary_Number_Theory) |
-| Sep 20 | 09:00 - 09:30 | Markus Himmel | Lean Metaprogramming Overview |
+| Sep 20 | 09:00 - 09:30 | Markus Himmel | [Lean Metaprogramming Overview](LeanInVienna/MetaprogrammingOverview) |
 | | 09:30 - 10:30 | Tomáš Skřivan | [Structures (1/2)](LeanInVienna/C06_Structures) |
 | | 11:00 - 12:15 | Tomáš Skřivan | [Structures (2/2)](LeanInVienna/C06_Structures) |
-| | 13:45 - 14:30 | Pietro Monticone | Getting Started with Blueprint-Driven Formalisation Projects in Lean |
+| | 13:45 - 14:30 | Pietro Monticone | [Getting Started with Blueprint-Driven Formalisation Projects in Lean](https://github.com/pitmonticone/LeanProject) |
 | | 14:30 - 15:45 | Tomáš Skřivan | [Differential Calculus (1/2)](LeanInVienna/C10_Differential_Calculus) |
 | | 16:15 - 17:30 | Tomáš Skřivan | [Differential Calculus (2/2)](LeanInVienna/C10_Differential_Calculus) |
 
