@@ -70,8 +70,8 @@ example (x : ℝ) (hx : 0 ≤ x) : x.sqrt ^ 2 = x := by
 -- Example 5: Dimension of quotient space is difference of dimensions
 
 example {R M : Type} [DivisionRing R] [AddCommGroup M] [Module R M] [FiniteDimensional R M] (N : Submodule R M) :
-    FiniteDimensional.finrank R (M ⧸ N) =
-      FiniteDimensional.finrank R M - FiniteDimensional.finrank R N := by
+    Module.finrank R (M ⧸ N) =
+      Module.finrank R M - Module.finrank R N := by
   have := Submodule.finrank_quotient_add_finrank N -- Found via Loogle 'FiniteDimensional.finrank, "quot"'
   omega
 

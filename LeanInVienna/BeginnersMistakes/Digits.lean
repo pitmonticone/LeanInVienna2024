@@ -19,4 +19,3 @@ import Mathlib
 #eval Nat.ofDigits 7 [(4 : Fin 7), 3, 2, 1]
 
 #eval (7 : ℕ).digits 466
-

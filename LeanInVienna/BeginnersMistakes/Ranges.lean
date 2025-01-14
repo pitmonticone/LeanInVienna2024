@@ -1,10 +1,9 @@
 import Mathlib
 
-
 #check Fin 10
 
-#check Fin.list 10
-#eval  Fin.list 10
+#check List.finRange 10
+#eval  List.finRange 10
 
 #check List.range
 #eval List.range 10

@@ -60,7 +60,7 @@ theorem false_zero_sum : ∑' k : ℕ, k / 2 ^ k ≠ 2 := by
     by_cases hn : n = 0
     · rw [hn]
       rfl
-    · have : n < 2 ^ n := by exact Nat.lt_two_pow n
+    · have : n < 2 ^ n := by exact Nat.lt_two_pow_self
       exact Nat.div_eq_of_lt this
   rw [this]
   norm_num

@@ -66,7 +66,7 @@ open Set
 
 example : ∃ x : ℝ, x^3 + 2*x + 1 = 0 := by
   let f (x : ℝ) := x^3 + 2*x + 1
-  suffices 0 ∈ range f by simp_all
+  suffices 0 ∈ range f by exact this
   apply intermediate_value_univ (a := -1) (b := 1)
   . fun_prop
   · simp [f]
